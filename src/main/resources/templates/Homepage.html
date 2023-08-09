@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org/" >
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="./assets/logo_ntl.png" type="image/x-icon"/>
+  <title>Homepage</title>
+
+  <!-- font owesome link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+          integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+  />
+
+  <!-- liniking css -->
+  <link rel="stylesheet" th:href="@{~/css/afterlogin.css}" />
+</head>
+
+<body>
+<!-- header section starts  -->
+
+<header>
+  <!-- logo and name on left side -->
+
+  <a href="#" class="logo"
+  ><img
+          th:src="@{/images/ucl1.png}"
+          alt="BADMINTON"
+          srcset=""
+  />JORDAN BADMINTON HALL</a
+  >
+
+  <div id="menu-bar" class="fas fa-bars"></div>
+  <div class="searchbar">
+    <input type="search" name="search" id="search" />
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </div>
+
+  <!-- navigation bar starts -->
+  <nav class="navbar">
+    <a href="#home">home</a>
+    <a th:href="@{~/user/booked/}+${userdata.id}">Badminton Court</a>
+    <a href="#contact-us">Service</a>
+    <!-- <a href="#gallery">gallery</a> -->
+
+    <a th:href="@{~/user/contactus}">contact</a>
+    <a th:href="@{~/user/profile/}+${userdata.id}">
+      <span th:text="${userdata.getName()}" style="color: black;margin-left: 5px; margin-top: -15px;" ></span>
+    </a>
+
+    <a th:href="@{~/user/logout}">logout</a>
+
+  </nav>
+
+  <!-- navigation bar completed -->
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts -->
+<section class="home" id="home">
+  <div class="content">
+    <h3>Play and grow</h3>
+    <p>
+      Come and play badminton with us! Our badminton court booking system offers a variety of courts in various locations, so you can easily find and book the perfect court for your needs. Whether you're looking to play a casual
+      pickup game or train with your team, our platform makes it easy to find the right court.
+    </p>
+
+  </div>
+  <div class="image">
+    <img th:src="@{/images/one.png}" alt="Badminton" />
+  </div>
+</section>
+<!-- home section comes to end -->
+
+<!-- badmintons listing started -->
+<section id="badmintons">
+  <h1>Here are the currently available badmintons courts</h1>
+
+  <div class="all-badminton">
+    <div class="indiviudal-badminton" th:each="badminton:${badmintons}">
+      <img th:src="'data:image/png;base64,'+${badminton.imageBase64}" alt="image/">
+      <h2 th:text="${badminton.badmintonname}"></h2>
+      <p th:text="${badminton.Description}"></p>
+      <a th:href="@{~/ball/product/}+${badminton.badminton_Id}">Book Badminton</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- footer -->
+
+<div class="footer">
+  <div class="inner-footer">
+
+    <!--  for company name and description -->
+    <div class="footer-items">
+      <h1>Website Name</h1>
+      <p>Description of any Badminton along with their bookings.</p>
+    </div>
+
+    <!--  for quick links  -->
+    <div class="footer-items">
+      <h3>Quick Links</h3>
+      <div class="border1"></div> <!--for the underline -->
+      <ul>
+        <a href="#"><li>Home</li></a>
+        <a href="#"><li>Contact</li></a>
+        <a href="#"><li>About</li></a>
+      </ul>
+    </div>
+
+    <!--  for some other links -->
+    <div class="footer-items">
+      <h3>Services</h3>
+      <div class="border1"></div>  <!--for the underline -->
+      <ul>
+        <a href="#"><li>Quick Booking</li></a>
+        <a href="#"><li>Quick Booking</li></a>
+        <a href="#"><li>Quick Booking</li></a>
+        <a href="#"><li>Quick Booking</li></a>
+      </ul>
+    </div>
+
+    <!--  for contact us info -->
+    <div class="footer-items">
+      <h3>Contact us</h3>
+      <div class="border1"></div>
+      <ul>
+        <li><i class="fa fa-map-marker" aria-hidden="true"></i>Dillibazar, KTM</li>
+        <li><i class="fa fa-phone" aria-hidden="true"></i>123456789</li>
+        <li><i class="fa fa-envelope" aria-hidden="true"></i>badmintonmania@gmail.com</li>
+      </ul>
+
+      <!--   for social links -->
+      <div class="social-media">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-google-plus-square"></i></a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <!-- scroll top button  -->
+  <a href="#home" class="fas fa-angle-up" id="scroll-top"></a>
+
+  <!-- custom js file link  -->
+  <script th:src="@{/js/script}"></script>
+</body>
+</html>
