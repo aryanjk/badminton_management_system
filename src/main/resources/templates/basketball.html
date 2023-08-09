@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org/" >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{~/css/badminton.css}">
+
+  <title></title>
+</head>
+
+<body>
+<!-- sidebar content from here -->
+<div class="sidebarcontent">
+  <h3>Admin Panel</h3>
+
+  <a th:href="@{~/admin/dashboard}"><i class="fas fa-tachometer-alt me-2">Dashboard</i></a>
+  <a th:href="@{~/ball/addbadminton}"><i class="fas fa-project-diagram me-2">Badminton</i></a>
+  <a th:href="@{~/admin/view}"> <i class="fas fa-chart-line me-2">View Badminton</i></a>
+  <a th:href="@{~/admin/contact}"><i class="fas fa-chart-line me-2">Badminton Review</i></a>
+  <a th:href="@{~/admin/report}"><i class="fas fa-paperclip me-2">Reports</i></a>
+<!--  <div class="logout">-->
+<!--    <i class="fas fa-power-off me-2">Logout</i>-->
+<!--  </div>-->
+  <div class="logout">
+    <a th:href="@{~/user/logout}"><i class="fas fa-power-off me-2">Logout</i></a>
+  </div>
+</div>
+<!-- sidebar content upto here -->
+
+<div class="insidecontent">
+  <h3>Add Badminton to the Website</h3>
+  <form th:method="post" th:action="@{/ball/save}" th:object="${badminton}" enctype="multipart/form-data">
+  <div class="inputsection">
+    <input class="field" type="text" hidden placeholder="UserId..."  th:field="*{fid}" th:value="${badminton.fid}" />
+
+    <div class="name badminton">
+      <input type="text" placeholder="Enter the Badminton name" required th:field="*{fname}" th:value="${badminton.fname}">
+    </div>
+    <div class="price badminton">
+      <input type="text" placeholder="Price of Badminton per Hour" th:field="*{fprice}" th:value="${badminton.fprice}">
+    </div>
+    <div class="contact badminton">
+      <input type="text" placeholder="Contact Number of Badminton" th:field="*{fcontact}" th:value="${badminton.fcontact}">
+    </div>
+    <div class="location badminton">
+      <input type="text" placeholder="Enter the location of badminton" th:field="*{flocation}" th:value="${badminton.flocation}">
+    </div>
+    <div class="desc badminton">
+      <textarea type="text" placeholder="Description About Badminton" th:field="*{description}" th:value="${badminton.description}">
+        </textarea>
+    </div>
+    <div class="photo badminton">
+      <input type="file" th:field="*{image}" th:value="${badminton.image}">
+    </div>
+    <div class="photo badminton">
+      <input type="file" th:field="*{image1}" th:value="${badminton.image1}">
+    </div>
+    <div class="photo badminton">
+      <input type="file" th:field="*{image2}" th:value="${badminton.image2}">
+    </div>
+<!--<textarea name="contactmessage" placeholder="Type your message" required th:field="*{contactmessage}" th:value="${contact.contactsubject}">-->
+
+  </div>
+  <div class="button">
+    <button type="submit">Add badminton</button>
+  </div>
+  </form>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
