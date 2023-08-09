@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org/" >
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{~/css/viewbadminton.css}">
+
+  <title></title>
+</head>
+
+<body>
+<!-- sidebar content from here -->
+<div class="sidebarcontent">
+  <h3>Admin Panel</h3>
+
+  <a th:href="@{~/admin/dashboard}"> <i class="fas fa-tachometer-alt me-2">Dashboard</i></a>
+  <a th:href="@{~/ball/addbadminton}"><i class="fas fa-project-diagram me-2">Badminton</i></a>
+  <a th:href="@{~/admin/view}"><i class="fas fa-chart-line me-2">View Badminton</i></a>
+  <a th:href="@{~/admin/contact}"><i class="fas fa-chart-line me-2">Badminton Review</i></a>
+  <a th:href="@{~/admin/report}"><i class="fas fa-paperclip me-2">Reports</i></a>
+<!--  <div class="logout">-->
+<!--    <i class="fas fa-power-off me-2">Logout</i>-->
+<!--  </div>-->
+  <div class="logout">
+    <a th:href="@{~/user/logout}"><i class="fas fa-power-off me-2">Logout</i></a>
+  </div>
+</div>
+<!-- sidebar content upto here -->
+<div class="innercontent">
+  <div class="indiviudal-badminton" th:each="badminton:${badmintons}">
+    <a th:href="@{~/admin/product/}+${badminton.basket_ballId}">
+    <img th:src="'data:image/png;base64,'+${badminton.imageBase64}" alt="image/">
+    <h2 th:text="${badminton.badmintonname}"></h2>
+    <p th:text="${badminton.Description}"></p>
+      </a>
+<!--    <a th:href="@{~/badminton/}+${badminton.badmintonId}">Book Badminton</a>-->
+  </div>
+
+</div>
+
+
+
+</body>
+
+</html>
