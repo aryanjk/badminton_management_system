@@ -12,6 +12,8 @@ body {
     font-weight: 400;
     color: #666666;
     background: #eaeff4;
+    background: url('https://img.freepik.com/free-photo/lovely-sport-composition-with-badminton-elements_23-2147913669.jpg?size=626&ext=jpg');
+    background-size: cover;
 }
 
 .wrapper {

@@ -30,7 +30,7 @@ public class BadmintonRepositoryTest {
 
         badmintonRepo.save(badminton);
 
-        Assertions.assertThat(badminton.getBasket_ballId()).isGreaterThan(0);
+        Assertions.assertThat(badminton.getBadminton_Id()).isGreaterThan(0);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class BadmintonRepositoryTest {
 
         badmintonRepo.save(badminton);
 
-        Badminton badminton1 = badmintonRepo.findById(badminton.getBasket_ballId()).get();
+        Badminton badminton1 = badmintonRepo.findById(badminton.getBadminton_Id()).get();
 
         badminton1.setBadmintoncontact("13265");
 

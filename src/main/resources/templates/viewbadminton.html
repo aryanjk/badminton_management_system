@@ -33,7 +33,7 @@
 <!-- sidebar content upto here -->
 <div class="innercontent">
   <div class="indiviudal-badminton" th:each="badminton:${badmintons}">
-    <a th:href="@{~/admin/product/}+${badminton.basket_ballId}">
+    <a th:href="@{~/admin/product/}+${badminton.badminton_Id}">
     <img th:src="'data:image/png;base64,'+${badminton.imageBase64}" alt="image/">
     <h2 th:text="${badminton.badmintonname}"></h2>
     <p th:text="${badminton.Description}"></p>
